@@ -19,7 +19,8 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: 'rgb(30 41 59)'
+      main: 'rgb(30 41 59)',
+      contrastText: '#fff',
     },
   },
 });

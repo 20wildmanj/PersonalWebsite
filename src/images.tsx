@@ -3,9 +3,13 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import styles from './images.module.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Card, CardActions, CardContent, Chip } from '@mui/material';
 export interface image {
     img: string,
     title: string,
+    date: string,
+    description: string,
+    chips: string[],
 }
 export interface ImageProps {
     images: image[],
@@ -21,7 +25,8 @@ export const Images:React.FC<ImageProps> = ({ images }) => {
             <div
             onClick={() => setSelected(index)}
             >
-            <div className={styles.flip}
+            <div
+            className={styles.flip}
             >
                 <div className={selected == index ? styles.flipBack : styles.flipFront}>
                 <ImageListItem key={item.img}>
@@ -34,7 +39,22 @@ export const Images:React.FC<ImageProps> = ({ images }) => {
                 </ImageListItem>
             </div>
             <div className={selected == index ? styles.flipFront : styles.flipBack}>
-                Hello
+                <Card sx={{width:'248px', height:'248px', overflow:'auto'}} raised={true} elevation={24}>
+                    <CardContent>
+                        <h2 className="text-2xl text-slate-800">
+                            {item.title}
+                        </h2>
+                        <p>
+                            {item.date}
+                        </p>
+                        <p className="text-slate-800 text-xs">
+                            {item.description}
+                        </p>
+                    </CardContent>
+                    <CardActions>
+                        {item.chips.map((chip) => (<Chip label={chip} color="primary"/>))}
+                    </CardActions>
+                </Card>
             </div>
             </div>
             </div>
