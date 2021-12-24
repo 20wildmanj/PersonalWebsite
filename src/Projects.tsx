@@ -1,5 +1,24 @@
 import React from 'react';
-import StandardImageList from './images';
+import { Images, image } from './images';
+
+const imageData:image[] = [
+    {
+      img: '/enjoey.png',
+      title: 'enjoey',
+    },
+    {
+      img: '/hayane.png',
+      title: 'hayane',
+    },
+    {
+      img: '/spreadsheet.png',
+      title: 'spreadsheet',
+    },
+    {
+      img: '/robo.jpg',
+      title: 'robotics',
+    },
+];
 
 export const Projects:React.FC<{}> = () => (
     <div className="flex flex-col items-center align-center">
@@ -7,7 +26,7 @@ export const Projects:React.FC<{}> = () => (
             Projects
         </h1>
         <div className="flex place-content-center bg-slate-800/50 p-20 w-400px rounded-[100px]">
-            <StandardImageList/>
+                <Images images={imageData}/>
         </div>
     </div>
 );
