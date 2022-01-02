@@ -14,7 +14,7 @@ const imageData:image[] = [
       title: 'Hayane',
       date: 'March 2021',
       description: `A web application that simulates the dorm room experience of shared camaraderie of studying late at night. Developed to increase connectivity between CMU students during the COVID-19 pandemic and virtual learning. Used websockets to connect user sessions without the complexity of a backend service.
-      I developed and presented this app with three other students at Tartanhacks 2021.`,
+      I developed and presented this app with three other students at Tartanhacks 2021`,
       chips: ['React','HTML','CSS']
     },
     {
@@ -35,10 +35,10 @@ const imageData:image[] = [
 
 export const Projects:React.FC<{}> = () => (
     <div className="flex flex-col items-center align-center">
-        <h1 className="text-5xl font-bold p-10 text-slate-800"> 
+        <h1 className="text-5xl font-bold p-5 sm:p-10 text-slate-800"> 
             Projects
         </h1>
-        <div className="flex place-content-center bg-slate-800/50 p-20 w-400px rounded-[100px]">
+        <div className="flex place-content-center bg-slate-800/50 p-8 sm:p-10 md:p-20 w-400px rounded-[100px]">
                 <Images images={imageData}/>
         </div>
     </div>

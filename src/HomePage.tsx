@@ -7,8 +7,8 @@ import React from 'react';
 
 export const HomePage:React.FC<{}> = () => (
     <>
-        <div className="flex flex-row justify-evenly">
-            <div className="text-slate-800 flex flex-col justify-evenly items-left max-w-lg">
+        <div className="flex sm:flex-row flex-col items-center sm:justify-evenly">
+            <div className="text-slate-800 py-10 sm:p-0 flex flex-col text-center sm:text-left sm:justify-evenly sm:items-left max-w-lg">
                 <h1 className="text-5xl font-bold">
                     Joseph Wildman
                 </h1>
@@ -16,7 +16,7 @@ export const HomePage:React.FC<{}> = () => (
                     Undergraduate Student at Carnegie Mellon University studying Electrical and Computer Engineering
                 </h2>
             </div>
-            <div className="rounded-xl p-3 bg-slate-400 hover:bg-slate-800 duration-500">
+            <div className="rounded-xl p-3 bg-slate-400 hover:bg-slate-800 duration-500 max-w-[330px]">
                 <Avatar variant="square" sx={{ width: 300, height:300, borderRadius: 10, }} src="profile.jpg">
                     Joey
                 </Avatar>

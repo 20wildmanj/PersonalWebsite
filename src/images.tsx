@@ -1,9 +1,12 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { useTheme } from '@mui/material/styles';
 import styles from './images.module.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Card, CardActions, CardContent, Chip } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 export interface image {
     img: string,
     title: string,
@@ -18,9 +21,11 @@ export interface ImageProps {
 
 export const Images:React.FC<ImageProps> = ({ images }) => {
     const [selected, setSelected] = React.useState(-1);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
     return (
-        <ImageList sx={{ width: 500, height: 500 }} cols={2} rowHeight={180}>
+        <ImageList sx={{ width: matches ? 500 : 350, height: matches ? 500 : 400, overflow:'auto' }} cols={matches ? 2 : 1} gap={matches ? undefined : 354}>
         {images.map((item, index) => (
             <div
             onClick={() => setSelected(index)}
@@ -29,33 +34,33 @@ export const Images:React.FC<ImageProps> = ({ images }) => {
             className={styles.flip}
             >
                 <div className={selected == index ? styles.flipBack : styles.flipFront}>
-                <ImageListItem key={item.img}>
-                <img
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                />
-                </ImageListItem>
-            </div>
-            <div className={selected == index ? styles.flipFront : styles.flipBack}>
-                <Card sx={{width:'248px', height:'248px', overflow:'auto'}} raised={true} elevation={24}>
-                    <CardContent>
-                        <h2 className="text-2xl text-slate-800">
-                            {item.title}
-                        </h2>
-                        <p>
-                            {item.date}
-                        </p>
-                        <p className="text-slate-800 text-xs">
-                            {item.description}
-                        </p>
-                    </CardContent>
-                    <CardActions>
-                        {item.chips.map((chip) => (<Chip label={chip} color="primary"/>))}
-                    </CardActions>
-                </Card>
-            </div>
+                    <ImageListItem key={item.img}>
+                    <img
+                        src={matches ? `${item.img}?w=164&h=164&fit=crop&auto=format` : `${item.img}?w=350&h=350&fit=crop&auto=format`}
+                        srcSet={matches ? `${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x` : `${item.img}?w=350&h=350&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item.title}
+                        loading="lazy"
+                    />
+                    </ImageListItem>
+                </div>
+                <div className={selected == index ? styles.flipFront : styles.flipBack}>
+                    <Card sx={{width: matches ? '248px' : '350px', height: matches ? '248px' : '350px', overflow:'auto'}} raised={true} elevation={24}>
+                        <CardContent>
+                            <h2 className="text-2xl text-slate-800">
+                                {item.title}
+                            </h2>
+                            <p>
+                                {item.date}
+                            </p>
+                            <p className="text-slate-800 text-xs">
+                                {item.description}
+                            </p>
+                        </CardContent>
+                        <CardActions>
+                            {item.chips.map((chip) => (<Chip label={chip} color="primary"/>))}
+                        </CardActions>
+                    </Card>
+                </div>
             </div>
             </div>
         ))}
