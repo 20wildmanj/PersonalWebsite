@@ -22,7 +22,23 @@ const theme = createTheme({
       main: 'rgb(30 41 59)',
       contrastText: '#fff',
     },
+    secondary: {
+      main: '#fff',
+      contrastText: 'rgb(30 41 59)',
+    }
   },
+  components: {
+    MuiPaper: {
+      variants: [
+        {
+          props: {variant:'elevation'},
+          style: {
+            backgroundColor: '#e2e8f0'
+          },
+        },
+      ]
+    },
+  }
 });
  // bg-gradient-to-b from-slate-100 to-slate-400
 const App:React.FC<{}> = () => {
