@@ -114,7 +114,7 @@ export const Work:React.FC<{}> = () => {
                             <MenuIcon color="primary"/>
                         </IconButton>
                         <div className="text-slate-800 p-5 w-full">
-                            <div className="text-4xl font-bold text-slate-800 pb-5">
+                            <div className="sm:text-left text-center text-4xl font-bold text-slate-800 pb-5">
                                 { items[highlight].longTitle ? items[highlight].longTitle: items[highlight].title}
                             </div>
                             <div className="flex place-content-center pb-5">
