@@ -15,6 +15,15 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+img {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeIn { 
+	100% { opacity: 1; }
+}
 
 .flipFront {
     transform: rotateY(0deg);
@@ -24,3 +33,4 @@
     transform: rotateY(180deg);
     transition: transform 0.6s ease-in;
 }
+

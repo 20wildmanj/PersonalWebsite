@@ -36,6 +36,7 @@ export const Images:React.FC<ImageProps> = ({ images }) => {
                 <div className={selected == index ? styles.flipBack : styles.flipFront}>
                     <ImageListItem key={item.img}>
                     <img
+                        style={{...{animationDelay: `${1000*index}`}}}
                         src={matches ? `${item.img}?w=164&h=164&fit=crop&auto=format` : `${item.img}?w=350&h=350&fit=crop&auto=format`}
                         srcSet={matches ? `${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x` : `${item.img}?w=350&h=350&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
