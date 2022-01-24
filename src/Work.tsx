@@ -38,7 +38,7 @@ and also help with writing Japanese characters such as hiragana and katakana.
 `
 const mca:string = 
 `
-I participated in 12 week workforce development program, where my main objective was to draft a 100+ page Preliminary Design Review (PDR) on a mission to explore and analyze ice deposits on the Martian surface.
+I participated in a 12 week workforce development program, where my main objective was to draft a 100+ page Preliminary Design Review (PDR) on a mission to explore and analyze ice deposits on the Martian surface.
 I researched, wrote, and revised a PDR with a team of 11 students, which outlined a mission to send a autonomous rover to Arcadia Planitia to drill into ice deposits and analyze samples for biological characteristics.
 Along with researching scientific instrumentation, I focused on the logistics of the mission, including the budget of travel costs, rover manufacturing and instrumentation procurement costs.
 `
