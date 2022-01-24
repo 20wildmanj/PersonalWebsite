@@ -5,7 +5,7 @@ import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -46,7 +46,7 @@ const App:React.FC<{}> = () => {
   const [selected, setSelected] = React.useState<string>('home');
   return (
     <>
-      <Router>
+      <Router basename='/'>
         <ThemeProvider theme={theme}>
           <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-400">
             <div className="p-10">
