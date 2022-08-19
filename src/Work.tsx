@@ -1,4 +1,4 @@
-import { AppBar, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Box } from '@mui/material';
+import { AppBar, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Box, Chip } from '@mui/material';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 const drawerWidth = 200;
@@ -10,7 +10,26 @@ interface workObject {
     timeEnd:string,
     description:string,
     image:string,
+    tags: string[]
 };
+const autolabDesc:string = 
+`
+I am currently a developer in a 6-person team of students at Carnegie Mellon University,
+working on an open-source course management and autograding service serving 5000+ CMU students and 20+ universities,
+with a goal of streamlining CS education. I review PRs from other team members, respond to instructors and outside contributors in
+on-calls, and develop new features to improve the Autolab student and instructor experience.
+`;
+const nianticDesc:string = 
+`
+During my time at Niantic, I mainly worked on developing a full-stack API management tool using React.js, Java, and gRPC to visualize geodata
+for a new Niantic geo-query focused API. Visualization was done using kepler.gl, an open source geospatial analysis tool developed by Uber.
+To allow shapes to be ingested and visualized by Kepler.gl, I implemented conversions between 3 geodata standards. Eventually, the admin tool could visualize
+up to 10000+ entities. Some features included with the tool were shape processing, property filtering, and runtime protobuf message decoding.
+An additional feature I made was a Role-Based-Access-Control solution. I went through the entire process of writing out a design doc to final implementation, and the final RBAC solution allows for 
+fine-grained management of user access to API features. I also managed the webapp deployment using kubernetes and Google Cloud Platform, and utilized JUnit testing and gradle build tools. Other than the Kepler.gl components, I also 
+designed app-specific, intuitive, and friendly components using Figma. During the internship, I communicated and collaborated with two cross-functional teams to address specific use-cases. This internship allowed me to do a deep dive
+on a specific API, understanding its in and outs, as well as handling geodata and dataflows. I enjoyed doing full-stack development with more of a backend and data focus.
+`;
 const playStationDesc:string =
 `
 At PlayStation, I was part of the inaugural class of interns for PlayStation Japan. 
@@ -42,13 +61,33 @@ I participated in a 12 week workforce development program, where my main objecti
 I researched, wrote, and revised a PDR with a team of 11 students, which outlined a mission to send a autonomous rover to Arcadia Planitia to drill into ice deposits and analyze samples for biological characteristics.
 Along with researching scientific instrumentation, I focused on the logistics of the mission, including the budget of travel costs, rover manufacturing and instrumentation procurement costs.
 `
+
+const Niantic:workObject = {
+    title:"Niantic",
+    role:"Software Engineering Intern",
+    timeStart:"5/2022",
+    timeEnd:"8/2022",
+    description:nianticDesc,
+    image:"https://research.nianticlabs.com/img/niantic-og.jpg",
+    tags: ["Java", "React.js", "gRPC"]
+}
+const Autolab:workObject = {
+    title:"CMU Autolab Project",
+    role:"Developer",
+    timeStart:"3/2022",
+    timeEnd:"Present",
+    description:autolabDesc,
+    image:"https://autolabproject.com/images/autolab_red.svg",
+    tags: ["Ruby on Rails", "Open Source", "Javascript", "SQL"]
+}
 const PlayStation:workObject  = {
     title:"PlayStation",
     role:"Software Engineering Intern",
     timeStart:"5/2021",
     timeEnd:"8/2021",
     description:playStationDesc,
-    image:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/2560px-PlayStation_logo.svg.png"
+    image:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/2560px-PlayStation_logo.svg.png",
+    tags: ["React.js", "Node.js", "Restful API", "MongoDB"]
 }
 const NASA:workObject  = {
     title:`NASA L'SPACE MCA`,
@@ -57,7 +96,8 @@ const NASA:workObject  = {
     timeStart:"8/2021",
     timeEnd:"12/2021",
     description:mca,
-    image:"https://pbs.twimg.com/profile_images/1423767662371344386/rgiBdDME_400x400.jpg"
+    image:"https://pbs.twimg.com/profile_images/1423767662371344386/rgiBdDME_400x400.jpg",
+    tags: ["Design Review"]
 }
 const CMULA:workObject  = {
     title: "CMU Modern Languages",
@@ -66,9 +106,10 @@ const CMULA:workObject  = {
     timeStart:"8/2022",
     timeEnd:"Present",
     description:jala,
-    image:"https://scontent.fagc2-1.fna.fbcdn.net/v/t1.6435-9/129755340_101695535148032_9147123596993604798_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=JI4VAVkWtM0AX_z7WND&_nc_ht=scontent.fagc2-1.fna&oh=00_AT9WnFdIPSGlMJky4I9kFooXk9Zl6n82iSlgK2TqwPYbHw&oe=62155878"
+    image:"https://pbs.twimg.com/profile_images/1410569887357997056/bR5fky40_400x400.jpg",
+    tags: ["Teaching"]
 }
-const items:workObject[] = [PlayStation,NASA,CMULA];
+const items:workObject[] = [Niantic, PlayStation, Autolab, NASA,CMULA];
 
 export const Work:React.FC<{}> = () => {
     const [mobileOpen,setMobileOpen] = React.useState<boolean>(false);
@@ -114,8 +155,20 @@ export const Work:React.FC<{}> = () => {
                             <MenuIcon color="primary"/>
                         </IconButton>
                         <div className="text-slate-800 p-5 w-full">
-                            <div className="sm:text-left text-center text-4xl font-bold text-slate-800 pb-5">
-                                { items[highlight].longTitle ? items[highlight].longTitle: items[highlight].title}
+                            <div className="flex justify-between">
+                                <div className="sm:text-left text-center text-4xl font-bold text-slate-800 pb-5">
+                                    { items[highlight].longTitle ? items[highlight].longTitle: items[highlight].title}
+                                </div>
+                                <div className="flex place-content-center pb-5 gap-x-2">
+                                    {items[highlight].tags.map((value) => {
+                                        return (
+                                            <Chip
+                                                variant="outlined"
+                                                label={value}
+                                            />
+                                        )
+                                    })}
+                                </div>
                             </div>
                             <div className="flex place-content-center pb-5">
                                 <div className="rounded-xl p-3 bg-slate-400 hover:bg-slate-800 duration-500">
@@ -138,6 +191,7 @@ export const Work:React.FC<{}> = () => {
                             <div className="pt-5">
                                 { items[highlight].description }
                             </div>
+
                         </div>
                     </Toolbar>
                 </AppBar>

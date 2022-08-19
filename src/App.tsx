@@ -42,7 +42,7 @@ const theme = createTheme({
 });
  // bg-gradient-to-b from-slate-100 to-slate-400
 const App:React.FC<{}> = () => {
-  const items = ['home', 'work', 'projects'];
+  const items:string[] = ['home', 'work', 'projects'];
   const [selected, setSelected] = React.useState<string>('home');
   return (
     <>
