@@ -72,7 +72,8 @@ const Niantic:workObject = {
     tags: ["Java", "React.js", "gRPC"]
 }
 const Autolab:workObject = {
-    title:"CMU Autolab Project",
+    longTitle: "CMU Autolab Project",
+    title:"Autolab",
     role:"Developer",
     timeStart:"3/2022",
     timeEnd:"Present",
